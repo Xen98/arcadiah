@@ -1,0 +1,61 @@
+---
+
+---
+
+<svg
+	id="icon-svg"
+	class="w-[150px] sm:w-[250px] h-auto md:w-[250px] lg:w-[300px]"
+	width="120mm"
+	height="120mm"
+	viewBox="-10 -10 120 120"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<circle cx="50" cy="50" r="50" class="compass-circle"></circle>
+
+	<g class="compass-arrow" id="g2">
+		<path fill="#cb299a" d="m 50,15 -11,35 11,-5 11,5 z" id="path1"></path>
+		<path
+			fill="#ffffff"
+			d="M 49.821121,20.082436 41.358297,46.911099 50,43.443581 Z"
+			id="path2"
+			style="stroke-width:0.912343"></path>
+	</g>
+
+	<text x="50" y="10" class="compass-text">N</text>
+</svg>
+
+<style>
+
+	#arrow {
+		animation: rotate 1s linear forwards;
+		animation-delay: 0.5s;
+	}
+
+	.compass-circle {
+		fill: none;
+		stroke: #cb299a;
+		stroke-width: 4;
+	}
+
+	.compass-arrow {
+		transform-origin: 42% 40%;
+		animation: rotateToNorth 2s ease-in-out forwards;
+	}
+
+	.compass-text {
+		fill: #cb299a;
+		font-weight: bold;
+		font-size: 8px;
+		text-anchor: middle;
+		user-select: none;
+	}
+
+	@keyframes rotateToNorth {
+		from {
+			transform: rotate(45deg);
+		}
+		to {
+			transform: rotate(0deg);
+		}
+	}
+</style>

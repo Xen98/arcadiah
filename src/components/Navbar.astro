@@ -1,0 +1,40 @@
+---
+// interface Props {
+// 	title: string;
+// }
+
+// const { title } = Astro.props;
+---
+
+<nav class="sticky top-0 bg-ah-cream h-20 flex justify-between items-center px-6 py-4 shadow-md text-slate-700 z-50 md:px-16">
+  <a href="#inicio">
+    <img src="/logo.png" alt="Logo de Arcadiah">
+  </a>
+
+  <ul class="hidden max-w-[600px] justify-between flex-grow px-16 md:flex">
+    <li class="hover:text-ah-pink"><a href="#inicio">Inicio</a></li>
+    <li class="hover:text-ah-pink"><a href="#arcadiah">¿Qué es Arcadiah?</a></li>
+    <li class="hover:text-ah-pink"><a href="#servicios">Servicios</a></li>
+    <li class="hover:text-ah-pink"><a href="#contacto">Contacto</a></li>
+  </ul>
+
+  <a href="/" class="hidden text-2xl pr-16 hover:text-ah-pink lg:inline group/phone">
+    <i class="fa-solid fa-phone mr-2 text-base bg-ah-pink rounded-full py-1 px-2 text-ah-cream group-hover/phone:bg-ah-pink-dark"></i>
+    (33) 8000-0000
+  </a>
+
+  <div class="hidden gap-4 min-[830px]:flex">
+    <a class="hover:text-ah-pink" href="/">
+      <i class="fa-brands fa-facebook-f bg-ah-pink rounded-full py-2 px-[0.69rem] text-ah-cream hover:bg-ah-pink-dark"></i>
+    </a>
+    <a class="hover:text-ah-pink" href="/">
+      <i class="fa-solid fa-envelope bg-ah-pink rounded-full py-2 px-2 text-ah-cream hover:bg-ah-pink-dark"></i>
+    </a>
+  </div>
+
+  <div class="flex md:hidden">
+    <a class="hover:text-ah-pink" href="/">
+      <i class="fa-solid fa-bars text-ah-pink text-2xl"></i>
+    </a>
+  </div>
+</nav>

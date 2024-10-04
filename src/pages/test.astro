@@ -1,0 +1,111 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Color Change on Scroll</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 200%;
+      scroll-behavior: smooth;
+      background-color: yellow;
+    }
+
+    .section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .section-1 {
+      background-color: red;
+    }
+
+    .section-2 {
+      background-color: #3498db;
+    }
+
+    /* Estilo inicial del SVG */
+    svg {
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: fill 0.5s ease, transform 0.5s ease;
+      fill: black; /* Color inicial */
+    }
+
+    /* Opcional: estilo para animación al hacer scroll */
+    .scrolled {
+      transform: translate(-50%, 300px); /* Se mueve hacia abajo al hacer scroll */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Primera sección (blanca) -->
+  <div class="section section-1">
+    <h1>Scroll down to see the SVG change color</h1>
+  </div>
+
+  <!-- Segunda sección (con fondo de color) -->
+  <div class="section section-2">
+    <h1>The SVG should now be white!</h1>
+  </div>
+
+  <!-- SVG que se mueve y cambia de color -->
+  <svg id="mySvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="40"/>
+  </svg>
+
+  <script>
+    const svgElement = document.getElementById('mySvg');
+    const section2 = document.querySelector('.section-2');
+
+    // Usamos IntersectionObserver para detectar cuando el SVG entra en la segunda sección
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Cambia el color del SVG cuando entra en la sección 2
+          if (svgElement)
+          svgElement.style.fill = 'white';
+        } else {
+          // Regresa al color original cuando sale de la sección 2
+          if (svgElement)
+          svgElement.style.fill = 'black';
+        }
+      });
+    });
+
+    if (section2)
+    observer.observe(section2);
+
+    // Animación en el SVG para que se mueva cuando se hace scroll
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition > 100) {
+        if (svgElement)
+        svgElement.classList.add('scrolled');  // Añade clase para mover el SVG hacia abajo
+      } else {
+        if (svgElement)
+        svgElement.classList.remove('scrolled');  // Vuelve a la posición original
+      }
+    });
+  </script>
+
+</body>
+</html>
